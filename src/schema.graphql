@@ -1,0 +1,46 @@
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  collections: [Collection!]
+}
+
+type Collection {
+  id: ID!
+  name: String!
+  owner: User!
+  content: [Content!]
+  collaborators: [User!]
+}
+
+type Content {
+  id: ID!
+  type: String!
+  title: String!
+  data: JSON
+  creator: User!
+  remixes: [Content!]
+  inspirations: [Content!]
+  comments: [Comment!]
+}
+
+type Comment {
+  id: ID!
+  author: User!
+  content: String!
+}
+
+type Query {
+  user(id: ID!): User
+  collections(owner: ID!): [Collection!]
+  content(id: ID!): Content
+  allContent(type: String!, tags: [String!]): [Content!]
+}
+
+type Mutation {
+  createCollection(name: String!): Collection
+  addContentToCollection(collectionId: ID!, contentId: ID!): Collection
+  updateContent(id: ID!, data: JSON): Content
+  addComment(contentId: ID!, content: String!): Comment
+  subscribeToContentUpdates(id: ID!): Any
+}

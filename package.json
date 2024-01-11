@@ -33,7 +33,7 @@
     "jest": "^22.2.2",
     "ts-jest": "^22.0.3",
     "tslint": "^5.9.1",
-    "tslint-config-prettier": "^1.7.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^2.7.1"
   },
   "dependencies": {
